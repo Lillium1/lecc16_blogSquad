@@ -1,10 +1,14 @@
+var squad = document.getElementById("contenedor")
+var comentario = document.getElementById("comentarios")
 function Datos(id, nombre, apellido, edad, hobbie){
 	this.id = id;	//Se agrega id para saber a quien pertenece el comentario
 	this.nombre = nombre;
 	this.apellido = apellido;
 	this.edad = edad + " años";
 	this.hobbie = hobbie;
-	
+	this.comentario = "<textarea id='comentarA' rows=5 cols=50 placeholder='Escribir un comentario...' maxlength='300'>" + "</textarea><br>" ;
+	this.boton = "<button  id='btn" + this.id + "onclick='Comentarios()'" + "'>Enviar</button>";
+	this.heart = "<button width='25' align='left' id='botonheart' onclick='like()'" + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>";	
 }
 
 function like (mg){
@@ -27,10 +31,8 @@ const persona9 = new Datos(9, "Paulina", "González", "26", ["Jugar Videojuegos"
 var arr = [];
 arr.push(persona1, persona2, persona3, persona4, persona5, persona6, persona7, persona8, persona9);
 
-var sq1 = document.getElementById("contenedor")
-
 arr.forEach(function(el){
-	sq1.innerHTML += 
+	squad.innerHTML += "<section" + 
 	"<div class='card horizontal col s12 m12 red lighten-5'>" +
     "<div>" + "<img src='img/" + el.id + ".jpeg' alt='foto de: "+ el.nombre + "' class='imagen' width='300' height='300'>" + "</div>" +
     "<div class='card-content'>" + "<div class='card-content red lighten-3'>" + "<br><br>" +
@@ -40,16 +42,16 @@ arr.forEach(function(el){
 	"<b>Hobbie: </b>" +
 	 "<ul><li>" + el.hobbie[0] + "</li></ul>" +
 	  "<ul><li>" + el.hobbie[1] + "</li></ul>" +
-	   "<ul><li>" + el.hobbie[2] + "</li></ul>" +
-	"<h4>" + "Comentarios:" + "</h4>" +
-	"<div id='comentarios'>" +
-	"<textarea id='comentarA' rows=5 cols=40 placeholder='Escribir un comentario...' maxlength='300'>" + "</textarea>" +
-	
-	"</div>" + "<br>";  
+	   "<ul><li>" + el.hobbie[2] + "</li></ul>" + el.comentario + el.boton+ el.heart +  "<br>"+"<br>"
+
+	+ "</section>" +
+
+
+	"<hr align='center' style='color: purple'/>"  
 				
-	"<textarea name='comment' >Comente aquí..." + "</textarea>" + "<br>" +
+	/*"<textarea name='comment' >Comente aquí..." + "</textarea>" + "<br>" +
         "<button>" + "hola" + "</button>" + "<br>" + "<br>";
-				/*<div id="comentarios">
+				<div id="comentarios">
 					<textarea id="comentarA" placeholder="Escribir un comentario..." maxlength="300"></textarea><br>
 					<button id="btn">Enviar</button>
 					<button onclick="like()" class="heart">
